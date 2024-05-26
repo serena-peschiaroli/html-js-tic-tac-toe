@@ -147,9 +147,45 @@ class Grid {
 
 }
 
+//HELPER FUNCTIONS
+
+const sumArray = array => array.reduce((sum, value) => sum + value, 0);
+
+const isInArray = (element, array) => array.includes(element);
+
+const shuffleArray = array => {
+    const newArray = array.slice();
+    for (let i = newArray.length -1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+
+    return newArray;
+}
+
+const intRandom = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
 
 
+//MAIN UFUNCTIONS
+
+function start(){
+    myGrid = new Grid();
+    moves = 0;
+    winner = 0;
+    gameOver = false;
+    whoseTurn = player; //default
+    myGrid.reset();
+    setTimeout(showOptions, 500);
+}
+
+//ask player if they want to play as X or O. X goes first
+
+function assignRoles(){
+    askUser("Do you want to go first?")
+    document.getElementById("yesBtn").addEventListener("click", makePlayerX);
+    document.getElementById("noBtn").addEventListener("click", makePlayerO);
+}
 
 
 
@@ -173,3 +209,5 @@ function cellClicked(id) {
     document.getElementById(id).style.cursor ="default";
     myGrid.cells[cell] = player;
 }
+
+
