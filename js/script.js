@@ -240,7 +240,7 @@ function makeComputerMove() {
     if (gameOver) return false;
 
     let cell = -1;
-    myArr = [];
+    let myArr = [];
 
     const corners = [0, 2, 6, 8];
     if (moves >= 3) {
@@ -250,18 +250,22 @@ function makeComputerMove() {
         } 
         if (cell === false) {
             myArr = myGrid.getFreeCellIndex();
-            cell = myGrid.cells[4] ? 4 : shuffleArray(myGrid.getFreeCellIndex())[0];
+           cell = myArr[intRandom(0, myArr.length - 1)];
         }
         // Avoid a catch-22 situation:
         if (moves === 3 && myGrid.cells[4] === computer && player === x) {
             if (myGrid.cells[7] === player && [myGrid.cells[0], myGrid.cells[2]].includes(player)) {
-                cell = shuffleArray([6, 8])[0];
+                myArr = [6,8];
+                cell = myArr[intRandom(0,1)];
             } else if (myGrid.cells[5] === player && [myGrid.cells[0], myGrid.cells[6]].includes(player)) {
-                cell = shuffleArray([2, 8])[0];
+                myArr = [2,8];
+                cell = myArr[intRandom(0,1)];
             } else if (myGrid.cells[3] === player && [myGrid.cells[2], myGrid.cells[8]].includes(player)) {
-                cell = shuffleArray([0, 6])[0];
+                myArr = [0,6];
+                cell = myArr[intRandom(0,1)];
             } else if (myGrid.cells[1] === player && [myGrid.cells[6], myGrid.cells[8]].includes(player)) {
-                cell = shuffleArray([0, 2])[0];
+                myArr = [0,2];
+                cell = myArr[intRandom(0,1)];
             }
         } else if (moves === 3 && myGrid.cells[4] === player && player === x) {
             if (myGrid.cells[2] === player && myGrid.cells[6] === computer) {
@@ -358,6 +362,15 @@ function checkWin() {
         const row = myGrid.getRowValues(i);
         if (row[0] > 0 && row[0] === row[1] && row[0] === row[2]) {
             winner = row[0] === computer ? computer : player;
+            if (row[0] == computer) {
+                score.computer++;
+                winner = computer;
+                console.log("computer wins");
+            } else {
+                score.player++;
+                winner = player;
+                console.log("player wins");
+            }
             const tmpAr = myGrid.getRowIndex(i);
             tmpAr.forEach(index => document.getElementById("cell" + index).classList.add("win-color"));
             setTimeout(endGame, 1000, winner);
@@ -369,7 +382,15 @@ function checkWin() {
     for (let i = 0; i <= 2; i++) {
         const col = myGrid.getColumnValues(i);
         if (col[0] > 0 && col[0] === col[1] && col[0] === col[2]) {
-            winner = col[0] === computer ? computer : player;
+             if (col[0] == computer) {
+                score.computer++;
+                winner = computer;
+                // console.log("computer wins");
+            } else {
+                score.player++;
+                winner = player;
+                // console.log("player wins");
+            }
             const tmpAr = myGrid.getColumnIndex(i);
             tmpAr.forEach(index => document.getElementById("cell" + index).classList.add("win-color"));
             setTimeout(endGame, 1000, winner);
@@ -381,7 +402,15 @@ function checkWin() {
     for (let i = 0; i <= 1; i++) {
         const diagonal = myGrid.getDiagValues(i);
         if (diagonal[0] > 0 && diagonal[0] === diagonal[1] && diagonal[0] === diagonal[2]) {
-            winner = diagonal[0] === computer ? computer : player;
+            if (diagonal[0] == computer) {
+                score.computer++;
+                winner = computer;
+                // console.log("computer wins");
+            } else {
+                score.player++;
+                winner = player;
+                // console.log("player wins");
+            }
             const tmpAr = myGrid.getDiagIndex(i);
             tmpAr.forEach(index => document.getElementById("cell" + index).classList.add("win-color"));
             setTimeout(endGame, 1000, winner);
