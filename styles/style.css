@@ -65,3 +65,112 @@ table {
     overflow: hidden;
     cursor: pointer;
 }
+
+h2{
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+h3{
+    font-size: 1.1em;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    padding: 0;
+    margin: 10px 0 2px 0;
+
+}
+
+.td_list{
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.th_list{
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: underline;
+}
+
+#restart {
+    font-size: 2rem;
+    width: 1em;
+    height: 0.9em;
+    cursor: pointer;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.x {
+    color: darksalmon;
+    position: relative;
+    top: -8px;
+    font-size: 1.2em;
+    cursor: default;
+}
+
+.o {
+    color: aquamarine;
+    position: relative;
+    top: -7px;
+    font-size: 1.0em;
+    cursor: default;
+}
+
+/* modal background */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+/* modal content */
+.modal-content {
+    background-color: rgb(240, 240, 240);
+    color: rgb(32, 32, 32);
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 16% auto;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    width: 380px;
+    max-width: 80%;
+}
+
+.modal-content p {
+    margin: 0;
+    padding: 0;
+}
+
+/* close button for modal dialog */
+.close {
+    color: rgb(170, 170, 170);
+    float: right;
+    position: relative;
+    top: -25px;
+    right: -10px;
+    font-size: 34px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.win-color {
+    background-color: rgb(240, 240, 240);
+}
